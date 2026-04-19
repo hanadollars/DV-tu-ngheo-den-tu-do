@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Từ Nghèo Đến Tự Do — Tự Do Tài Chính Thực Sự | Hanadola Media</title>
+<meta name="description" content="Nơi bạn học cách nghĩ khác về tiền — để sống khác, giàu thật. Công cụ, tài liệu số và giải pháp tài chính cá nhân thực chiến.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1628;--navy2:#112240;--navy3:#1A3A5C;
+  --sky:#2196F3;--sky-light:#64B5F6;--sky-pale:#E3F2FD;
+  --emerald:#00BFA5;--emerald-light:#4DD0C4;
+  --amber:#FF8F00;--amber-light:#FFB300;
+  --white:#F8FAFF;--text:#E8EDF5;--text-muted:rgba(232,237,245,0.55);
+  --border:rgba(100,181,246,0.15);--card-bg:rgba(17,34,64,0.8);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--text);font-family:'Nunito',sans-serif;font-weight:400;line-height:1.7;overflow-x:hidden;}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(11,22,40,0.92);align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--navy2);border:1px solid var(--border);border-top:3px solid var(--sky);padding:48px 40px;max-width:520px;width:90%;position:relative;animation:popIn .3s ease;max-height:90vh;overflow-y:auto;}
+@keyframes popIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--text-muted);font-size:24px;cursor:pointer;}
+.modal-close:hover{color:var(--white);}
+.modal-title{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;margin-bottom:6px;color:var(--white);}
+.modal-sub{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
+.m-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.m-label{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--sky-light);}
+.m-input,.m-select,.m-textarea{background:rgba(11,22,40,0.7);border:1px solid var(--border);color:var(--text);padding:11px 15px;font-family:'Nunito',sans-serif;font-size:14px;outline:none;transition:border-color .2s;width:100%;}
+.m-input:focus,.m-select:focus,.m-textarea:focus{border-color:var(--sky);}
+.m-select{appearance:none;cursor:pointer;}
+.m-textarea{height:80px;resize:none;}
+.m-submit{width:100%;padding:14px;margin-top:8px;background:linear-gradient(135deg,var(--sky),var(--emerald));border:none;color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s;}
+.m-submit:hover{opacity:.9;}
+.m-submit:disabled{opacity:.6;cursor:not-allowed;}
+.m-note{font-size:11px;color:var(--text-muted);text-align:center;margin-top:10px;}
+.m-success{display:none;text-align:center;padding:24px 0;}
+.m-success-icon{font-size:48px;margin-bottom:12px;}
+.m-success h3{font-family:'Libre Baskerville',serif;font-size:20px;margin-bottom:8px;color:var(--white);}
+.m-success p{font-size:13px;color:var(--text-muted);}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 56px;background:rgba(11,22,40,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Libre Baskerville',serif;font-size:17px;font-weight:700;color:var(--sky-light);letter-spacing:.02em;}
+.nav-logo small{display:block;font-size:10px;font-weight:400;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-top:1px;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--sky-light);}
+.nav-cta{background:linear-gradient(135deg,var(--sky),var(--emerald));color:#fff;border:none;padding:10px 22px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:opacity .2s;text-decoration:none;display:inline-block;}
+.nav-cta:hover{opacity:.88;}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 56px 90px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 85% 40%,rgba(33,150,243,0.1) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 15% 70%,rgba(0,191,165,0.08) 0%,transparent 55%),radial-gradient(ellipse 30% 40% at 50% 10%,rgba(255,179,0,0.06) 0%,transparent 50%);}
+.hero-grid{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.hero-grid::before{content:'';position:absolute;top:-10%;right:-5%;width:600px;height:600px;border:1px solid rgba(33,150,243,0.07);border-radius:50%;}
+.hero-grid::after{content:'';position:absolute;top:5%;right:5%;width:400px;height:400px;border:1px solid rgba(0,191,165,0.06);border-radius:50%;}
+.hero-content{max-width:660px;position:relative;z-index:1;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(33,150,243,0.1);border:1px solid rgba(33,150,243,0.25);padding:7px 16px;margin-bottom:36px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-light);animation:fadeUp .7s ease both;}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--emerald-light);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(50px,7vw,82px);font-weight:700;line-height:1.05;letter-spacing:-.02em;animation:fadeUp .7s .08s ease both;}
+.hero h1 .hl{display:block;background:linear-gradient(135deg,var(--sky-light),var(--emerald-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-desc{margin:26px 0 44px;font-size:17px;color:var(--text-muted);max-width:500px;line-height:1.85;animation:fadeUp .7s .16s ease both;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .7s .24s ease both;}
+.btn-grad{background:linear-gradient(135deg,var(--sky),var(--emerald));color:#fff;border:none;padding:15px 38px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:opacity .2s,transform .12s;}
+.btn-grad:hover{opacity:.88;transform:translateY(-2px);}
+.btn-outline{background:transparent;border:1px solid rgba(100,181,246,0.3);color:var(--text);padding:15px 38px;font-family:'Nunito',sans-serif;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s;}
+.btn-outline:hover{border-color:var(--sky-light);color:var(--sky-light);}
+.hero-stats{position:absolute;right:56px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:28px;z-index:1;animation:fadeLeft .7s .3s ease both;}
+.hs{text-align:right;padding:20px 24px;background:var(--card-bg);border:1px solid var(--border);border-right:3px solid var(--sky);}
+.hs-num{font-family:'Libre Baskerville',serif;font-size:36px;font-weight:700;background:linear-gradient(135deg,var(--sky-light),var(--emerald-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.hs-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-top:4px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+
+/* ── SECTIONS ── */
+section{padding:96px 56px;position:relative;z-index:1;}
+.stag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--emerald-light);margin-bottom:14px;}
+.stag::before{content:'';width:24px;height:2px;background:var(--emerald-light);}
+.sh{font-family:'Libre Baskerville',serif;font-size:clamp(30px,4vw,46px);font-weight:700;line-height:1.15;letter-spacing:-.01em;margin-bottom:18px;}
+.sh .hl{background:linear-gradient(135deg,var(--sky-light),var(--emerald-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sdesc{color:var(--text-muted);font-size:16px;max-width:520px;line-height:1.85;}
+
+/* ── ABOUT ── */
+.about{background:var(--navy2);}
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:center;margin-top:56px;}
+.about-visual{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1;max-width:360px;}
+.av-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(33,150,243,0.15);}
+.av-ring:nth-child(2){inset:14%;border-color:rgba(0,191,165,0.2);}
+.av-ring:nth-child(3){inset:28%;border-color:rgba(33,150,243,0.35);}
+.av-center{position:relative;z-index:1;width:100px;height:100px;background:linear-gradient(135deg,var(--sky),var(--emerald));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;color:#fff;font-family:'Libre Baskerville',serif;}
+.about-pts{display:flex;flex-direction:column;gap:20px;margin-top:36px;}
+.apt{display:flex;gap:18px;align-items:flex-start;padding:18px 20px;background:rgba(11,22,40,0.5);border-left:3px solid var(--sky);transition:border-color .2s;}
+.apt:hover{border-color:var(--emerald);}
+.apt-n{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;color:var(--sky);line-height:1;min-width:28px;}
+.apt-t strong{display:block;font-size:15px;font-weight:700;margin-bottom:3px;color:var(--white);}
+.apt-t span{font-size:13px;color:var(--text-muted);}
+
+/* ── SERVICES ── */
+.services{background:var(--navy);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.svc{background:var(--card-bg);border:1px solid var(--border);padding:32px 28px;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.svc::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--sky),var(--emerald));opacity:0;transition:opacity .2s;}
+.svc:hover{transform:translateY(-4px);border-color:rgba(100,181,246,0.3);box-shadow:0 12px 40px rgba(0,0,0,0.3);}
+.svc:hover::after{opacity:1;}
+.svc-icon{font-size:30px;margin-bottom:12px;}
+.svc-num{position:absolute;top:14px;right:18px;font-family:'Libre Baskerville',serif;font-size:44px;font-weight:700;color:rgba(33,150,243,0.07);line-height:1;}
+.svc-name{font-size:15px;font-weight:700;margin-bottom:10px;color:var(--white);}
+.svc-desc{font-size:13px;color:var(--text-muted);line-height:1.8;}
+.svc-list{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);}
+.svc-list li{font-size:12px;color:var(--text-muted);margin-bottom:5px;padding-left:14px;position:relative;list-style:none;}
+.svc-list li::before{content:'›';position:absolute;left:0;color:var(--emerald-light);}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--navy2);}
+.testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:56px;}
+.testi{background:var(--navy);border:1px solid var(--border);padding:28px 28px 24px;position:relative;}
+.testi::before{content:'"';position:absolute;top:16px;left:22px;font-family:'Libre Baskerville',serif;font-size:60px;line-height:1;color:rgba(33,150,243,0.12);font-weight:700;}
+.testi-stars{color:var(--amber-light);font-size:13px;margin-bottom:14px;padding-top:8px;}
+.testi-text{font-size:14px;color:var(--text-muted);line-height:1.85;margin-bottom:20px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--sky),var(--emerald));display:flex;align-items:center;justify-content:center;font-family:'Libre Baskerville',serif;font-weight:700;font-size:16px;color:#fff;flex-shrink:0;}
+.testi-name{font-size:14px;font-weight:700;color:var(--white);}
+.testi-role{font-size:12px;color:var(--text-muted);}
+.testi-badge{display:inline-block;font-size:10px;padding:3px 10px;background:rgba(0,191,165,0.12);border:1px solid rgba(0,191,165,0.25);color:var(--emerald-light);margin-top:4px;}
+
+/* ── PRODUCTS ── */
+.products{background:var(--navy3);}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:56px;}
+.prod{background:var(--navy2);border:1px solid var(--border);padding:32px;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;}
+.prod:hover{transform:translateY(-4px);border-color:rgba(100,181,246,0.35);box-shadow:0 16px 48px rgba(0,0,0,0.3);}
+.prod-badge{display:inline-block;padding:4px 12px;margin-bottom:18px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.badge-hot{background:rgba(255,179,0,0.15);border:1px solid rgba(255,179,0,0.35);color:var(--amber-light);}
+.badge-new{background:rgba(0,191,165,0.12);border:1px solid rgba(0,191,165,0.3);color:var(--emerald-light);}
+.badge-tool{background:rgba(33,150,243,0.12);border:1px solid rgba(33,150,243,0.3);color:var(--sky-light);}
+.badge-ai{background:rgba(156,39,176,0.12);border:1px solid rgba(156,39,176,0.3);color:#CE93D8;}
+.prod-name{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;margin-bottom:10px;line-height:1.3;color:var(--white);}
+.prod-desc{font-size:13px;color:var(--text-muted);line-height:1.85;margin-bottom:20px;}
+.prod-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px;}
+.ptag{font-size:11px;padding:4px 10px;background:rgba(33,150,243,0.08);border:1px solid rgba(33,150,243,0.18);color:var(--sky-light);}
+.prod-price{display:flex;align-items:baseline;gap:10px;margin-bottom:18px;}
+.pp-main{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;background:linear-gradient(135deg,var(--amber-light),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.pp-old{font-size:14px;color:var(--text-muted);text-decoration:line-through;}
+.pp-note{font-size:12px;color:var(--emerald-light);}
+.prod-note{font-size:11px;color:var(--text-muted);padding:10px 14px;background:rgba(255,179,0,0.06);border-left:2px solid var(--amber);margin-bottom:16px;}
+.prod-buy{display:block;width:100%;padding:12px;background:linear-gradient(135deg,var(--sky),var(--emerald));color:#fff;border:none;text-align:center;font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:opacity .2s;}
+.prod-buy:hover{opacity:.85;}
+
+/* ── HOW TO BUY ── */
+.howtobuy{background:var(--navy2);}
+.htb-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:56px;background:var(--border);}
+.htb-step{background:var(--navy2);padding:32px 24px;text-align:center;}
+.htb-num{width:52px;height:52px;background:linear-gradient(135deg,var(--sky),var(--emerald));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:#fff;}
+.htb-name{font-size:14px;font-weight:700;margin-bottom:8px;color:var(--white);}
+.htb-desc{font-size:12px;color:var(--text-muted);line-height:1.75;}
+.htb-warn{margin-top:24px;padding:16px 24px;background:rgba(255,179,0,0.08);border:1px solid rgba(255,179,0,0.25);font-size:13px;color:var(--amber-light);display:flex;align-items:center;gap:10px;}
+
+/* ── FAQ ── */
+.faq{background:var(--navy);}
+.faq-list{max-width:780px;margin:56px auto 0;display:flex;flex-direction:column;gap:0;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:'Nunito',sans-serif;font-size:15px;font-weight:600;padding:22px 44px 22px 0;text-align:left;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:color .2s;}
+.faq-q:hover{color:var(--sky-light);}
+.faq-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:transform .3s,background .2s;color:var(--sky-light);}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(33,150,243,0.15);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a p{font-size:14px;color:var(--text-muted);line-height:1.85;padding:0 44px 22px 0;}
+
+/* ── POLICIES ── */
+.policies{background:var(--navy2);}
+.pol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.pol{background:var(--navy);border:1px solid var(--border);padding:28px 24px;}
+.pol-icon{font-size:28px;margin-bottom:14px;}
+.pol-title{font-size:15px;font-weight:700;margin-bottom:10px;color:var(--white);}
+.pol-body{font-size:13px;color:var(--text-muted);line-height:1.85;}
+.pol-body li{margin-bottom:6px;padding-left:14px;position:relative;list-style:none;}
+.pol-body li::before{content:'•';position:absolute;left:0;color:var(--sky-light);}
+
+/* ── MISSION ── */
+.mission{background:var(--navy);text-align:center;}
+.mquote{font-family:'Libre Baskerville',serif;font-size:clamp(22px,3.5vw,38px);font-weight:400;font-style:italic;line-height:1.5;max-width:740px;margin:0 auto 52px;color:var(--text);}
+.mquote .hl{font-style:normal;font-weight:700;background:linear-gradient(135deg,var(--sky-light),var(--emerald-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.mvals{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;}
+.mval{text-align:center;max-width:160px;}
+.mval-icon{width:64px;height:64px;background:rgba(33,150,243,0.1);border:1px solid rgba(33,150,243,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px;transition:background .2s;}
+.mval:hover .mval-icon{background:rgba(33,150,243,0.2);}
+.mval-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;}
+.mval-desc{font-size:12px;color:var(--text-muted);margin-top:5px;}
+
+/* ── PROCESS ── */
+.process{background:var(--navy2);}
+.proc-steps{display:flex;gap:0;margin-top:56px;position:relative;}
+.proc-steps::before{content:'';position:absolute;top:26px;left:26px;right:26px;height:1px;background:linear-gradient(to right,var(--sky),var(--emerald),var(--sky));opacity:.25;}
+.proc-step{flex:1;padding:0 16px;text-align:center;}
+.proc-dot{width:52px;height:52px;background:var(--navy2);border:2px solid var(--sky);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:var(--sky-light);position:relative;z-index:1;transition:background .2s,border-color .2s;}
+.proc-step:hover .proc-dot{background:var(--sky);color:#fff;}
+.proc-name{font-size:14px;font-weight:700;margin-bottom:7px;color:var(--white);}
+.proc-desc{font-size:12px;color:var(--text-muted);line-height:1.75;}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:linear-gradient(135deg,#0d2137,#0B1628);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 56px;text-align:center;position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(33,150,243,0.08),transparent);}
+.cta-banner h2{font-family:'Libre Baskerville',serif;font-size:clamp(26px,4vw,44px);font-weight:700;margin-bottom:16px;position:relative;}
+.cta-banner p{font-size:16px;color:var(--text-muted);max-width:500px;margin:0 auto 36px;line-height:1.8;position:relative;}
+.cta-banner .btn-grad{font-size:16px;padding:16px 48px;position:relative;}
+
+/* ── CONTACT ── */
+.contact{background:var(--navy3);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:56px;}
+.ci{display:flex;flex-direction:column;gap:22px;}
+.citem{display:flex;gap:16px;}
+.cicon{width:44px;height:44px;min-width:44px;background:rgba(33,150,243,0.1);border:1px solid rgba(33,150,243,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.clabel{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky-light);margin-bottom:3px;}
+.cval{font-size:14px;color:var(--text);}
+.cval a{color:var(--sky-light);text-decoration:none;}
+.cval a:hover{text-decoration:underline;}
+.cform{display:flex;flex-direction:column;gap:14px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--sky-light);}
+.fi,.fs,.ft{background:rgba(11,22,40,0.7);border:1px solid var(--border);color:var(--text);padding:12px 16px;font-family:'Nunito',sans-serif;font-size:14px;outline:none;transition:border-color .2s;width:100%;}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--sky);}
+.fs{appearance:none;cursor:pointer;}
+.ft{height:100px;resize:none;}
+.fb{padding:14px;background:linear-gradient(135deg,var(--sky),var(--emerald));border:none;color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s;}
+.fb:hover{opacity:.88;}
+.fb:disabled{opacity:.6;cursor:not-allowed;}
+.form-success{display:none;background:rgba(0,191,165,0.1);border:1px solid rgba(0,191,165,0.3);padding:20px;text-align:center;}
+.form-success h4{color:var(--emerald-light);margin-bottom:6px;font-size:16px;}
+.form-success p{font-size:13px;color:var(--text-muted);}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);border-top:1px solid var(--border);padding:48px 56px 32px;}
+.ft-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:36px;margin-bottom:40px;}
+.ft-logo{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;background:linear-gradient(135deg,var(--sky-light),var(--emerald-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;}
+.ft-tagline{font-size:13px;color:var(--text-muted);max-width:260px;line-height:1.7;}
+.ft-col h4{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sky-light);margin-bottom:14px;}
+.ft-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:8px;transition:color .2s;}
+.ft-col a:hover{color:var(--sky-light);}
+.ft-col p{font-size:13px;color:var(--text-muted);margin-bottom:6px;}
+.ft-divider{height:1px;background:var(--border);margin-bottom:24px;}
+.ft-copy{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--text-muted);}
+.ft-copy a{color:var(--text-muted);text-decoration:none;}
+.ft-copy a:hover{color:var(--sky-light);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:14px 20px;}
+  .nav-links{display:none;}
+  section{padding:64px 20px;}
+  .hero{padding:100px 20px 64px;}
+  .hero-stats{display:none;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr;}
+  .prod-grid,.testi-grid{grid-template-columns:1fr;}
+  .pol-grid{grid-template-columns:1fr;}
+  .htb-steps{grid-template-columns:1fr 1fr;}
+  .proc-steps{flex-direction:column;gap:24px;}
+  .proc-steps::before{display:none;}
+  .ft-top{flex-direction:column;}
+  .ft-copy{flex-direction:column;text-align:center;}
+  .cta-banner{padding:56px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- MODAL TƯ VẤN -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    <div id="modal-form-wrap">
+      <div class="modal-title">Đăng ký tư vấn miễn phí</div>
+      <div class="modal-sub">Điền thông tin — chúng tôi liên hệ trong vòng 2 giờ làm việc.</div>
+      <div class="m-group">
+        <label class="m-label">Họ và tên *</label>
+        <input class="m-input" type="text" placeholder="Nguyễn Văn A" id="m-name">
+      </div>
+      <div class="m-group">
+        <label class="m-label">Số điện thoại *</label>
+        <input class="m-input" type="tel" placeholder="09xx.xxx.xxx" id="m-phone">
+      </div>
+      <div class="m-group">
+        <label class="m-label">Email</label>
+        <input class="m-input" type="email" placeholder="email@gmail.com" id="m-email">
+      </div>
+      <div class="m-group">
+        <label class="m-label">Nhu cầu quan tâm *</label>
+        <select class="m-select" id="m-need">
+          <option value="">— Chọn nhu cầu —</option>
+          <option>Tài liệu số / Cẩm nang tài chính</option>
+          <option>App &amp; Công cụ quản lý tài chính</option>
+          <option>Template quản lý chi tiêu</option>
+          <option>Tư vấn xác định mục tiêu tài chính</option>
+          <option>Lập kế hoạch tài chính cá nhân</option>
+          <option>Thiết kế app / công cụ theo yêu cầu</option>
+          <option>Thiết kế website / Landing Page</option>
+          <option>Khác</option>
+        </select>
+      </div>
+      <div class="m-group">
+        <label class="m-label">Mô tả chi tiết nhu cầu</label>
+        <textarea class="m-textarea" id="m-desc" placeholder="Bạn đang gặp vấn đề gì? Mong muốn đạt được điều gì?"></textarea>
+      </div>
+      <button class="m-submit" id="m-btn" onclick="submitModal()">Gửi đăng ký tư vấn</button>
+      <div class="m-note">Thông tin của bạn được bảo mật tuyệt đối. Chúng tôi không chia sẻ với bên thứ ba.</div>
+    </div>
+    <div class="m-success" id="modal-success">
+      <div class="m-success-icon">✅</div>
+      <h3>Đã nhận yêu cầu!</h3>
+      <p>Chúng tôi sẽ liên hệ với bạn trong vòng <strong style="color:var(--sky-light)">2 giờ làm việc</strong>.<br>Hoặc inbox ngay: <a href="https://facebook.com/Tungheodentudo" target="_blank" style="color:var(--sky-light)">Facebook Fanpage</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    Từ Nghèo Đến Tự Do
+    <small>by Hanadola Media &amp; Technology</small>
+  </div>
+  <div class="nav-links">
+    <a href="#about">Về chúng tôi</a>
+    <a href="#services">Dịch vụ</a>
+    <a href="#products">Sản phẩm</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Liên hệ</a>
+  </div>
+  <button class="nav-cta" onclick="openModal()">Tư vấn miễn phí</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span>Hành trình tài chính thực sự</div>
+    <h1>Từ Nghèo<span class="hl">Đến Tự Do</span></h1>
+    <p class="hero-desc">Nơi bạn học cách nghĩ khác về tiền — để sống khác, giàu thật. Công cụ, tài liệu số và giải pháp tài chính cá nhân giúp bạn kiểm soát dòng tiền ngay hôm nay.</p>
+    <div class="hero-btns">
+      <button class="btn-grad" onclick="openModal()">Tư vấn miễn phí</button>
+      <a href="#products" class="btn-outline">Xem sản phẩm</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-num">7+</div><div class="hs-label">Dịch vụ &amp; Sản phẩm</div></div>
+    <div class="hs"><div class="hs-num">100%</div><div class="hs-label">Thực chiến</div></div>
+    <div class="hs"><div class="hs-num">24/7</div><div class="hs-label">Hỗ trợ khách hàng</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="reveal">
+    <div class="stag">Về chúng tôi</div>
+    <h2 class="sh">Chúng tôi <span class="hl">là ai?</span></h2>
+    <p class="sdesc">Hanadola Media &amp; Technology — đơn vị phát triển hệ sinh thái sản phẩm số và dịch vụ giáo dục tài chính, giúp người Việt chinh phục tự do tài chính bằng tư duy đúng và công cụ thực chiến.</p>
+  </div>
+  <div class="about-grid reveal">
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <div class="about-visual">
+        <div class="av-ring"></div>
+        <div class="av-ring"></div>
+        <div class="av-ring"></div>
+        <div class="av-center">₫</div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:16px;line-height:1.9;color:var(--text-muted);margin-bottom:28px;">Chúng tôi tin rằng <strong style="color:var(--white)">tự do tài chính không phải đặc quyền</strong> của người giàu có sẵn — mà là kết quả của tư duy đúng, thói quen đúng, và công cụ đúng.</p>
+      <div class="about-pts">
+        <div class="apt"><div class="apt-n">01</div><div class="apt-t"><strong>Sứ mệnh</strong><span>Giúp người Việt đạt tự do tài chính thông qua kiến thức thực chiến và công cụ số thiết thực.</span></div></div>
+        <div class="apt"><div class="apt-n">02</div><div class="apt-t"><strong>Tầm nhìn</strong><span>Trở thành nền tảng sản phẩm số tài chính cá nhân hàng đầu Việt Nam — dễ dùng, có kết quả đo lường được.</span></div></div>
+        <div class="apt"><div class="apt-n">03</div><div class="apt-t"><strong>Cam kết</strong><span>Mọi sản phẩm đều được kiểm chứng thực tế. Không hứa hẹn làm giàu nhanh — chỉ có giải pháp đúng và bền vững.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="reveal">
+    <div class="stag">Dịch vụ</div>
+    <h2 class="sh">Giải pháp <span class="hl">toàn diện</span></h2>
+    <p class="sdesc">Từ tài liệu số đến dịch vụ cá nhân hóa — chúng tôi đồng hành cùng bạn trên toàn bộ hành trình tài chính.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="svc">
+      <div class="svc-num">01</div>
+      <div class="svc-icon">📋</div>
+      <div class="svc-name">Tài liệu số &amp; Cẩm nang tài chính</div>
+      <div class="svc-desc">Bộ cẩm nang, hướng dẫn và tài liệu tham khảo số được biên soạn kỹ lưỡng — giúp bạn nắm vững tư duy và phương pháp quản lý tài chính cá nhân hiệu quả.</div>
+      <ul class="svc-list">
+        <li>Cẩm nang tư duy tài chính</li>
+        <li>Hướng dẫn đầu tư cho người mới</li>
+        <li>Tài liệu quản lý dòng tiền</li>
+        <li>Định dạng số — nhận ngay sau thanh toán</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-num">02</div>
+      <div class="svc-icon">⚙️</div>
+      <div class="svc-name">App &amp; Công cụ quản lý tài chính</div>
+      <div class="svc-desc">Ứng dụng web và bộ công cụ số giúp bạn theo dõi thu chi, lập ngân sách và kiểm soát tài chính mỗi ngày — đơn giản, trực quan, hiệu quả tức thì.</div>
+      <ul class="svc-list">
+        <li>App theo dõi thu chi cá nhân</li>
+        <li>Bảng ngân sách tháng tự động</li>
+        <li>Dashboard tài chính trực quan</li>
+        <li>Báo cáo chi tiêu định kỳ</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-num">03</div>
+      <div class="svc-icon">📊</div>
+      <div class="svc-name">Template &amp; Bộ mẫu tài chính</div>
+      <div class="svc-desc">Bộ template Google Sheets được thiết kế sẵn — copy về, điền số liệu là dùng ngay. Tiết kiệm thời gian thiết lập, tập trung vào hành động.</div>
+      <ul class="svc-list">
+        <li>Template ngân sách cá nhân/hộ gia đình</li>
+        <li>Bảng theo dõi mục tiêu tiết kiệm</li>
+        <li>Mẫu lập kế hoạch tài chính năm</li>
+        <li>Template theo dõi đầu tư</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-num">04</div>
+      <div class="svc-icon">🤖</div>
+      <div class="svc-name">Bộ Prompt AI tài chính</div>
+      <div class="svc-desc">Tập hợp các câu lệnh AI được tối ưu sẵn — giúp bạn dùng ChatGPT/Claude để phân tích tài chính, lập kế hoạch và giải quyết các vấn đề tài chính cụ thể.</div>
+      <ul class="svc-list">
+        <li>Prompt phân tích chi tiêu</li>
+        <li>Prompt lập kế hoạch tiết kiệm</li>
+        <li>Prompt tư vấn đầu tư cơ bản</li>
+        <li>Cập nhật thường xuyên</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-num">05</div>
+      <div class="svc-icon">🎯</div>
+      <div class="svc-name">Tư vấn &amp; Lập kế hoạch tài chính</div>
+      <div class="svc-desc">Dịch vụ cá nhân hóa giúp bạn xác định mục tiêu tài chính rõ ràng, phân tích tình hình hiện tại và xây dựng lộ trình hành động cụ thể theo từng giai đoạn.</div>
+      <ul class="svc-list">
+        <li>Phân tích bức tranh tài chính cá nhân</li>
+        <li>Xác định mục tiêu tự do tài chính</li>
+        <li>Lập kế hoạch 3-6-12 tháng</li>
+        <li>Theo dõi và điều chỉnh tiến độ</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-num">06</div>
+      <div class="svc-icon">💻</div>
+      <div class="svc-name">Thiết kế App &amp; Landing Page</div>
+      <div class="svc-desc">Xây dựng app công cụ tài chính theo yêu cầu riêng, hoặc thiết kế trang landing page / sales page chuyên nghiệp phục vụ mục tiêu kinh doanh của bạn.</div>
+      <ul class="svc-list">
+        <li>App quản lý tài chính theo yêu cầu</li>
+        <li>Landing page / Sales page chuyển đổi cao</li>
+        <li>Giao diện tối ưu mobile &amp; desktop</li>
+        <li>Bàn giao file hoàn chỉnh</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="reveal">
+    <div class="stag">Phản hồi</div>
+    <h2 class="sh">Khách hàng <span class="hl">nói gì?</span></h2>
+    <p class="sdesc">Những thay đổi thực tế từ những người đã trải qua hành trình Từ Nghèo Đến Tự Do.</p>
+  </div>
+  <div class="testi-grid reveal">
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Trước đây mình cứ nghĩ tài chính cá nhân là chuyện của người giàu. Sau khi đọc cẩm nang và dùng template, mình đã tiết kiệm được 5 triệu/tháng mà không thấy thiếu thốn gì — chỉ sau 3 tháng áp dụng."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">T</div>
+        <div>
+          <div class="testi-name">Nguyễn Thành T.</div>
+          <div class="testi-role">Nhân viên văn phòng, TP.HCM</div>
+          <div class="testi-badge">✅ Cẩm Nang Tài Chính Thực Chiến</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Template Google Sheets quá xịn! Trước mình toàn ghi chép lộn xộn, giờ có bảng tính sẵn, chỉ cần điền vào là biết ngay mình đang tiêu tiền vào đâu. Đội ngũ hỗ trợ nhiệt tình lắm."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">L</div>
+        <div>
+          <div class="testi-name">Trần Thị L.</div>
+          <div class="testi-role">Giáo viên, Hà Nội</div>
+          <div class="testi-badge">✅ Template Tài Chính Google Sheets</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Bộ prompt AI tài chính thực sự hữu ích — mình dùng để lên kế hoạch trả nợ và phân tích xem có nên đầu tư thêm không. ChatGPT với bộ prompt này trả lời chính xác hơn hẳn khi hỏi thẳng."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">H</div>
+        <div>
+          <div class="testi-name">Lê Minh H.</div>
+          <div class="testi-role">Lập trình viên freelance, Đà Nẵng</div>
+          <div class="testi-badge">✅ Bộ Prompt AI Tài Chính</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Tư vấn lập kế hoạch tài chính cá nhân rất bài bản. Được phân tích cụ thể tình hình hiện tại, đặt mục tiêu rõ ràng và lộ trình từng bước. Lần đầu tiên mình thấy 'tự do tài chính' không còn là mơ nữa."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div>
+          <div class="testi-name">Phạm Văn P.</div>
+          <div class="testi-role">Chủ cửa hàng nhỏ, Cần Thơ</div>
+          <div class="testi-badge">✅ Tư vấn Lập kế hoạch tài chính</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="reveal">
+    <div class="stag">Sản phẩm số</div>
+    <h2 class="sh">Bộ sản phẩm <span class="hl">thực chiến</span></h2>
+    <p class="sdesc">Mỗi sản phẩm giải quyết một vấn đề tài chính cụ thể. Nhận ngay sau thanh toán — không cần cài đặt phức tạp.</p>
+  </div>
+  <div class="prod-grid reveal">
+    <div class="prod">
+      <div class="prod-badge badge-hot">&#9733; Bán chạy nhất</div>
+      <div class="prod-name">Cẩm Nang Tài Chính Thực Chiến</div>
+      <div class="prod-desc">30 bài học tài chính cốt lõi mà trường học không dạy — được trình bày theo 3 lớp: lý thuyết cốt lõi, ví dụ thực tế bằng số liệu, và hướng dẫn áp dụng ngay. Từ tư duy nền tảng đến kỹ năng thực chiến và con đường đến tự do tài chính thực sự.</div>
+      <div class="prod-tags">
+        <span class="ptag">30 bài học</span>
+        <span class="ptag">3 phần chuyên sâu</span>
+        <span class="ptag">90+ ví dụ thực tế</span>
+        <span class="ptag">120 tình huống</span>
+        <span class="ptag">Hướng dẫn áp dụng ngay</span>
+        <span class="ptag">Tài liệu số HTML</span>
+      </div>
+      <div class="prod-note">📥 Nhận link truy cập qua email sau khi thanh toán. Mở trực tiếp trên trình duyệt — không cần cài đặt.</div>
+      <div style="margin-bottom:16px;">
+        <div style="font-size:12px;font-weight:700;color:var(--sky-light);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase;">Nội dung 3 phần:</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.9;">
+          <span style="color:var(--sky-light);">Phần I</span> — Nền Tảng Tư Duy (Bài 01–10)<br>
+          <span style="color:var(--emerald-light);">Phần II</span> — Kỹ Năng Thực Chiến (Bài 11–20)<br>
+          <span style="color:var(--amber-light);">Phần III</span> — Chiều Sâu &amp; Tự Do (Bài 21–30)
+        </div>
+      </div>
+      <div class="prod-price">
+        <div class="pp-main">149.000₫</div>
+        <div class="pp-old">299.000₫</div>
+        <div class="pp-note">Tiết kiệm 50%</div>
+      </div>
+      <a href="https://taichinhthucchien.hanadola.com/" target="_blank" class="prod-buy">Xem chi tiết &amp; Mua ngay ↗</a>
+    </div>
+    <div class="prod">
+      <div class="prod-badge badge-new">Mới ra mắt</div>
+      <div class="prod-name">App Quản Lý Tài Chính Cá Nhân</div>
+      <div class="prod-desc">Ứng dụng web giúp theo dõi thu chi, lập ngân sách và nhìn rõ bức tranh tài chính mỗi ngày. Giao diện trực quan, truy cập mọi thiết bị.</div>
+      <div class="prod-tags">
+        <span class="ptag">Theo dõi thu chi</span>
+        <span class="ptag">Lập ngân sách</span>
+        <span class="ptag">Báo cáo tháng</span>
+        <span class="ptag">Truy cập web</span>
+      </div>
+      <div class="prod-note">📥 Nhận link truy cập qua email sau khi đăng ký. Dùng trên trình duyệt — không cần cài đặt.</div>
+      <div class="prod-price">
+        <div class="pp-main">99.000₫</div>
+        <div class="pp-note">/tháng &nbsp;·&nbsp; 699.000₫/năm</div>
+      </div>
+      <button class="prod-buy" onclick="openModal()">Đăng ký dùng thử</button>
+    </div>
+    <div class="prod">
+      <div class="prod-badge badge-tool">Công cụ</div>
+      <div class="prod-name">Bộ Template Tài Chính Google Sheets</div>
+      <div class="prod-desc">5 bảng tính được thiết kế sẵn — copy về Google Drive, điền số liệu là dùng ngay. Theo dõi chi tiêu, tiết kiệm, đầu tư và lập kế hoạch tài chính năm.</div>
+      <div class="prod-tags">
+        <span class="ptag">Google Sheets</span>
+        <span class="ptag">5 bảng tính</span>
+        <span class="ptag">Hướng dẫn sử dụng</span>
+        <span class="ptag">Cập nhật vĩnh viễn</span>
+      </div>
+      <div class="prod-note">📥 Nhận link Google Sheets ngay sau thanh toán. Copy về Drive cá nhân để sử dụng.</div>
+      <div class="prod-price">
+        <div class="pp-main">49.000₫</div>
+        <div class="pp-note">Dùng vĩnh viễn</div>
+      </div>
+      <button class="prod-buy" onclick="openModal()">Mua ngay</button>
+    </div>
+    <div class="prod">
+      <div class="prod-badge badge-ai">AI Tool</div>
+      <div class="prod-name">Bộ Prompt AI Tài Chính Cá Nhân</div>
+      <div class="prod-desc">50+ câu lệnh AI được tối ưu hóa dành riêng cho tài chính cá nhân. Dùng với ChatGPT hoặc Claude để phân tích, lập kế hoạch và đưa ra quyết định tài chính thông minh.</div>
+      <div class="prod-tags">
+        <span class="ptag">50+ prompt</span>
+        <span class="ptag">ChatGPT &amp; Claude</span>
+        <span class="ptag">Phân tích chi tiêu</span>
+        <span class="ptag">Lập kế hoạch đầu tư</span>
+      </div>
+      <div class="prod-note">📥 Nhận tài liệu số kèm hướng dẫn sử dụng chi tiết ngay sau khi thanh toán.</div>
+      <div class="prod-price">
+        <div class="pp-main">99.000₫</div>
+        <div class="pp-old">199.000₫</div>
+        <div class="pp-note">Tiết kiệm 50%</div>
+      </div>
+      <button class="prod-buy" onclick="openModal()">Mua ngay</button>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO BUY -->
+<section class="howtobuy" id="howtobuy">
+  <div class="reveal">
+    <div class="stag">Hướng dẫn mua hàng</div>
+    <h2 class="sh">Mua hàng <span class="hl">đơn giản — 4 bước</span></h2>
+    <p class="sdesc">Quy trình nhanh chóng, minh bạch — nhận sản phẩm ngay sau khi thanh toán được xác nhận.</p>
+  </div>
+  <div class="htb-steps reveal">
+    <div class="htb-step">
+      <div class="htb-num">1</div>
+      <div class="htb-name">Chọn sản phẩm</div>
+      <div class="htb-desc">Nhấn "Mua ngay" hoặc inbox Fanpage Facebook để được tư vấn và nhận link trang thanh toán của sản phẩm bạn chọn.</div>
+    </div>
+    <div class="htb-step">
+      <div class="htb-num">2</div>
+      <div class="htb-name">Điền thông tin</div>
+      <div class="htb-desc">Điền họ tên, email và số điện thoại để hệ thống tạo đơn hàng và mã QR thanh toán riêng cho bạn.</div>
+    </div>
+    <div class="htb-step">
+      <div class="htb-num">3</div>
+      <div class="htb-name">Thanh toán</div>
+      <div class="htb-desc">Quét mã QR hoặc chuyển khoản ACB với đúng nội dung. Hệ thống tự xác nhận trong vòng 1–2 phút.</div>
+    </div>
+    <div class="htb-step">
+      <div class="htb-num">4</div>
+      <div class="htb-name">Nhận &amp; sử dụng</div>
+      <div class="htb-desc">Link nhận tài liệu gửi về email ngay sau khi xác nhận. Hóa đơn điện tử được phát hành tự động.</div>
+    </div>
+  </div>
+  <div class="htb-warn reveal">
+    <span style="font-size:20px;">⚠️</span>
+    <span><strong>Lưu ý:</strong> Điền đúng địa chỉ email để nhận tài liệu số và hóa đơn điện tử. Kiểm tra cả hộp thư Spam nếu không thấy email sau 5 phút. Cần hỗ trợ: gọi <strong>0703.965.703</strong> hoặc inbox Fanpage.</span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto;">
+    <div class="stag" style="justify-content:center;">Câu hỏi thường gặp</div>
+    <h2 class="sh">Bạn đang <span class="hl">thắc mắc gì?</span></h2>
+    <p class="sdesc" style="margin:0 auto;">Những câu hỏi phổ biến nhất từ khách hàng — chúng tôi trả lời thẳng và rõ ràng.</p>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Tài liệu số có khác gì so với tài liệu thông thường không?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><p>Tài liệu số của chúng tôi được thiết kế riêng cho màn hình — bố cục chuyên nghiệp, font chữ rõ nét, có thể xem trên mọi thiết bị (điện thoại, máy tính bảng, laptop). Khác với tài liệu in, bạn nhận ngay sau thanh toán qua email, không cần chờ vận chuyển.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Sau khi thanh toán, nhận tài liệu bằng cách nào?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><p>Hệ thống tự động gửi link truy cập về email bạn đăng ký trong vòng 1–5 phút sau khi xác nhận thanh toán. Nếu không thấy, kiểm tra hộp thư Spam hoặc liên hệ hotline 0703.965.703 để được hỗ trợ ngay.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Tôi có thể dùng tài liệu trên điện thoại không?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><p>Hoàn toàn được! Tài liệu số HTML tương thích với mọi thiết bị — chỉ cần trình duyệt Chrome hoặc Safari là xem được ngay, không cần cài app hay phần mềm đặc biệt nào.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Có hóa đơn điện tử không? Dùng được cho chi tiêu doanh nghiệp không?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><p>Có. Hóa đơn điện tử hợp lệ theo quy định của Bộ Tài Chính được phát hành tự động qua hệ thống SePay và gửi thẳng đến email của bạn. Hóa đơn đầy đủ thông tin công ty, MST, có thể dùng cho mục đích kế toán doanh nghiệp.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Chính sách hoàn tiền như thế nào?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><p>Hoàn tiền 100% nếu sản phẩm bị lỗi kỹ thuật không khắc phục được, yêu cầu trong vòng 24 giờ sau khi nhận. Trường hợp không phù hợp, bạn có thể đổi sang sản phẩm khác cùng giá trị. Liên hệ email admin@hanadola.com hoặc hotline 0703.965.703.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Tôi không giỏi tài chính, liệu có hiểu được không?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><p>Tất cả tài liệu và công cụ được thiết kế cho người bắt đầu từ con số 0. Ngôn ngữ đơn giản, ví dụ thực tế bằng số liệu cụ thể, hướng dẫn áp dụng từng bước. Nếu có bất kỳ câu hỏi nào, đội ngũ hỗ trợ sẵn sàng giải đáp miễn phí.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Dịch vụ tư vấn tài chính cá nhân diễn ra như thế nào?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><p>Sau khi đăng ký, chuyên viên tư vấn sẽ liên hệ để thu thập thông tin tài chính hiện tại. Buổi tư vấn diễn ra qua Zoom/Meet khoảng 60-90 phút — bao gồm phân tích bức tranh tài chính, đặt mục tiêu và lập lộ trình hành động cụ thể. Bạn sẽ nhận tài liệu tóm tắt sau buổi tư vấn.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- POLICIES -->
+<section class="policies" id="policies">
+  <div class="reveal">
+    <div class="stag">Chính sách</div>
+    <h2 class="sh">Cam kết <span class="hl">minh bạch</span></h2>
+    <p class="sdesc">Chúng tôi đặt quyền lợi khách hàng lên hàng đầu với các chính sách rõ ràng, công bằng.</p>
+  </div>
+  <div class="pol-grid reveal">
+    <div class="pol">
+      <div class="pol-icon">🛒</div>
+      <div class="pol-title">Chính sách đặt hàng</div>
+      <div class="pol-body"><ul>
+        <li>Đặt hàng qua Fanpage Facebook hoặc link trang thanh toán trực tiếp</li>
+        <li>Xác nhận đơn trong vòng 30 phút trong giờ làm việc</li>
+        <li>Thanh toán 100% trước khi nhận sản phẩm</li>
+        <li>Hóa đơn điện tử gửi qua email tự động</li>
+        <li>Hỗ trợ kỹ thuật miễn phí 7 ngày sau khi nhận hàng</li>
+      </ul></div>
+    </div>
+    <div class="pol">
+      <div class="pol-icon">🔄</div>
+      <div class="pol-title">Chính sách hoàn tiền</div>
+      <div class="pol-body"><ul>
+        <li>Hoàn tiền 100% nếu sản phẩm lỗi kỹ thuật không khắc phục được</li>
+        <li>Yêu cầu hoàn tiền trong vòng 24 giờ sau khi nhận hàng</li>
+        <li>Không hoàn tiền sau khi đã truy cập và xem nội dung thành công</li>
+        <li>Đổi sang sản phẩm khác cùng giá trị nếu không phù hợp</li>
+        <li>Liên hệ hotline hoặc email để xử lý yêu cầu nhanh chóng</li>
+      </ul></div>
+    </div>
+    <div class="pol">
+      <div class="pol-icon">🔒</div>
+      <div class="pol-title">Bảo mật thông tin</div>
+      <div class="pol-body"><ul>
+        <li>Thông tin cá nhân được mã hóa và bảo mật tuyệt đối</li>
+        <li>Không chia sẻ dữ liệu khách hàng cho bên thứ ba</li>
+        <li>Chỉ dùng thông tin để liên lạc và hỗ trợ sau bán hàng</li>
+        <li>Khách hàng có quyền yêu cầu xóa dữ liệu bất kỳ lúc nào</li>
+        <li>Tuân thủ quy định bảo vệ dữ liệu cá nhân theo pháp luật VN</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+  <div class="reveal">
+    <div class="stag" style="display:block;text-align:center;margin-bottom:24px;">Triết lý</div>
+    <blockquote class="mquote">"Không ai sinh ra đã biết cách làm giàu. Nhưng ai cũng <span class="hl">có thể học được</span> — nếu được chỉ đúng cách, đúng lúc."</blockquote>
+  </div>
+  <div class="mvals reveal">
+    <div class="mval"><div class="mval-icon">⚡</div><div class="mval-name">Thực chiến</div><div class="mval-desc">Áp dụng ngay, không lý thuyết</div></div>
+    <div class="mval"><div class="mval-icon">🎯</div><div class="mval-name">Rõ ràng</div><div class="mval-desc">Lộ trình cụ thể, đo lường được</div></div>
+    <div class="mval"><div class="mval-icon">🌿</div><div class="mval-name">Bền vững</div><div class="mval-desc">Xây từ gốc rễ tư duy</div></div>
+    <div class="mval"><div class="mval-icon">💡</div><div class="mval-name">Đơn giản</div><div class="mval-desc">Ai cũng hiểu và dùng được</div></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="reveal">
+    <div class="stag">Hành trình</div>
+    <h2 class="sh">Con đường <span class="hl">4 bước</span></h2>
+    <p class="sdesc">Lộ trình đơn giản, bất kỳ ai cũng có thể bắt đầu — dù đang ở đâu trên hành trình tài chính.</p>
+  </div>
+  <div class="proc-steps reveal">
+    <div class="proc-step"><div class="proc-dot">01</div><div class="proc-name">Nhận thức</div><div class="proc-desc">Hiểu rõ bức tranh tài chính hiện tại — thu nhập, chi tiêu, nợ, tiết kiệm</div></div>
+    <div class="proc-step"><div class="proc-dot">02</div><div class="proc-name">Tư duy</div><div class="proc-desc">Thay đổi cách nghĩ về tiền — từ "tiêu tiền" sang "làm việc với tiền"</div></div>
+    <div class="proc-step"><div class="proc-dot">03</div><div class="proc-name">Hành động</div><div class="proc-desc">Dùng công cụ và tài liệu cụ thể để kiểm soát dòng tiền, tăng tiết kiệm</div></div>
+    <div class="proc-step"><div class="proc-dot">04</div><div class="proc-name">Tự do</div><div class="proc-desc">Đạt điểm thu nhập thụ động đủ trang trải cuộc sống theo ý muốn</div></div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Bắt đầu hành trình <span style="background:linear-gradient(135deg,var(--sky-light),var(--emerald-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">tự do tài chính</span> ngay hôm nay</h2>
+  <p>Đừng để "mai làm" trở thành mãi mãi không làm. Mỗi ngày bạn trì hoãn là một ngày tự do tài chính bị đẩy lùi thêm.</p>
+  <button class="btn-grad" onclick="openModal()" style="font-size:16px;padding:16px 48px;">Tư vấn miễn phí ngay</button>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="reveal">
+    <div class="stag">Liên hệ</div>
+    <h2 class="sh">Bắt đầu <span class="hl">ngay hôm nay</span></h2>
+    <p class="sdesc">Để lại thông tin — chúng tôi tư vấn miễn phí và phản hồi trong thời gian sớm nhất.</p>
+  </div>
+  <div class="contact-grid reveal">
+    <div class="ci">
+      <div class="citem"><div class="cicon">🏢</div><div><div class="clabel">Công ty</div><div class="cval">Hanadola Media &amp; Technology</div></div></div>
+      <div class="citem"><div class="cicon">🔖</div><div><div class="clabel">Mã số thuế</div><div class="cval">0319352856</div></div></div>
+      <div class="citem"><div class="cicon">📍</div><div><div class="clabel">Địa chỉ</div><div class="cval">P903, Tầng 9, Diamond Plaza, 34 Lê Duẩn, Phường Bến Nghé, Quận 1, TP.HCM</div></div></div>
+      <div class="citem"><div class="cicon">📞</div><div><div class="clabel">Hotline</div><div class="cval"><a href="tel:0703965703">0703.965.703</a></div></div></div>
+      <div class="citem"><div class="cicon">✉️</div><div><div class="clabel">Email</div><div class="cval"><a href="mailto:admin@hanadola.com">admin@hanadola.com</a></div></div></div>
+      <div class="citem"><div class="cicon">📘</div><div><div class="clabel">Fanpage</div><div class="cval"><a href="https://facebook.com/Tungheodentudo" target="_blank">facebook.com/Tungheodentudo</a></div></div></div>
+      <div class="citem"><div class="cicon">🕐</div><div><div class="clabel">Giờ làm việc</div><div class="cval">Thứ 2 – Thứ 7: 8:00 – 22:00<br>Chủ nhật: 9:00 – 21:00</div></div></div>
+    </div>
+    <div>
+      <div class="form-success" id="contact-success">
+        <h4>✅ Đã gửi yêu cầu thành công!</h4>
+        <p>Chúng tôi sẽ liên hệ với bạn trong vòng 2 giờ làm việc.<br>Hoặc inbox ngay: <a href="https://facebook.com/Tungheodentudo" target="_blank" style="color:var(--sky-light)">Facebook Fanpage</a></p>
+      </div>
+      <div class="cform" id="contact-form">
+        <div class="fg"><label class="fl">Họ và tên *</label><input class="fi" type="text" id="c-name" placeholder="Nguyễn Văn A"></div>
+        <div class="fg"><label class="fl">Số điện thoại *</label><input class="fi" type="tel" id="c-phone" placeholder="09xx.xxx.xxx"></div>
+        <div class="fg"><label class="fl">Email</label><input class="fi" type="email" id="c-email" placeholder="email@gmail.com"></div>
+        <div class="fg">
+          <label class="fl">Nhu cầu quan tâm</label>
+          <select class="fs" id="c-need">
+            <option value="">— Chọn nhu cầu —</option>
+            <option>Tài liệu số / Cẩm nang tài chính</option>
+            <option>App &amp; Công cụ quản lý tài chính</option>
+            <option>Template quản lý chi tiêu</option>
+            <option>Tư vấn xác định mục tiêu tài chính</option>
+            <option>Thiết kế app / công cụ theo yêu cầu</option>
+            <option>Thiết kế website / Landing Page</option>
+            <option>Khác</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Mô tả chi tiết</label><textarea class="ft" id="c-desc" placeholder="Bạn đang gặp vấn đề gì? Mong muốn đạt được điều gì?"></textarea></div>
+        <button class="fb" id="c-btn" onclick="submitContact()">Gửi yêu cầu tư vấn</button>
+        <p style="font-size:11px;color:var(--text-muted);text-align:center;">Hoặc inbox trực tiếp: <a href="https://facebook.com/Tungheodentudo" target="_blank" style="color:var(--sky-light)">Facebook Fanpage</a> &nbsp;·&nbsp; Hotline: <a href="tel:0703965703" style="color:var(--sky-light)">0703.965.703</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-brand">
+      <div class="ft-logo">Từ Nghèo Đến Tự Do</div>
+      <div class="ft-tagline">Tư duy · Hành động · Tự do tài chính — Sản phẩm số và dịch vụ tài chính cá nhân thực chiến.</div>
+    </div>
+    <div class="ft-col">
+      <h4>Sản phẩm</h4>
+      <a href="#products">Cẩm nang tài chính</a>
+      <a href="#products">App quản lý chi tiêu</a>
+      <a href="#products">Template Google Sheets</a>
+      <a href="#products">Bộ Prompt AI tài chính</a>
+    </div>
+    <div class="ft-col">
+      <h4>Dịch vụ</h4>
+      <a href="#services">Tư vấn tài chính</a>
+      <a href="#services">Lập kế hoạch cá nhân</a>
+      <a href="#services">Thiết kế App theo yêu cầu</a>
+      <a href="#services">Thiết kế Landing Page</a>
+    </div>
+    <div class="ft-col">
+      <h4>Thông tin công ty</h4>
+      <p>Hanadola Media &amp; Technology</p>
+      <p>MST: 0319352856</p>
+      <p>P903, Diamond Plaza, 34 Lê Duẩn, Q.1, TP.HCM</p>
+      <p>📞 <a href="tel:0703965703" style="color:var(--text-muted)">0703.965.703</a></p>
+      <p>✉️ <a href="mailto:admin@hanadola.com" style="color:var(--text-muted)">admin@hanadola.com</a></p>
+    </div>
+  </div>
+  <div class="ft-divider"></div>
+  <div class="ft-copy">
+    <span>© 2026 Hanadola Media &amp; Technology. All rights reserved.</span>
+    <span>
+      <a href="#policies">Chính sách đặt hàng</a> &nbsp;·&nbsp;
+      <a href="#policies">Hoàn tiền</a> &nbsp;·&nbsp;
+      <a href="#policies">Bảo mật thông tin</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+/* ── Modal ── */
+function openModal(){
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+async function submitModal(){
+  const name=document.getElementById('m-name').value.trim();
+  const phone=document.getElementById('m-phone').value.trim();
+  const email=document.getElementById('m-email').value.trim();
+  const need=document.getElementById('m-need').value;
+  const description=document.getElementById('m-desc').value.trim();
+  if(!name||!phone){alert('Vui lòng điền họ tên và số điện thoại!');return;}
+  const btn=document.getElementById('m-btn');
+  btn.disabled=true;btn.textContent='Đang gửi...';
+  try{
+    const r=await fetch('/api/submit-contact',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,phone,email,need,description})
+    });
+    const d=await r.json();
+    if(d.success){
+      document.getElementById('modal-form-wrap').style.display='none';
+      document.getElementById('modal-success').style.display='block';
+    } else {
+      alert(d.error||'Có lỗi xảy ra. Vui lòng thử lại!');
+      btn.disabled=false;btn.textContent='Gửi đăng ký tư vấn';
+    }
+  }catch(e){
+    alert('Không kết nối được. Vui lòng thử lại hoặc liên hệ hotline 0703.965.703');
+    btn.disabled=false;btn.textContent='Gửi đăng ký tư vấn';
+  }
+}
+
+/* ── Contact form ── */
+async function submitContact(){
+  const name=document.getElementById('c-name').value.trim();
+  const phone=document.getElementById('c-phone').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const need=document.getElementById('c-need').value;
+  const description=document.getElementById('c-desc').value.trim();
+  if(!name||!phone){alert('Vui lòng điền họ tên và số điện thoại!');return;}
+  const btn=document.getElementById('c-btn');
+  btn.disabled=true;btn.textContent='Đang gửi...';
+  try{
+    const r=await fetch('/api/submit-contact',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,phone,email,need,description})
+    });
+    const d=await r.json();
+    if(d.success){
+      document.getElementById('contact-form').style.display='none';
+      document.getElementById('contact-success').style.display='block';
+    } else {
+      alert(d.error||'Có lỗi xảy ra. Vui lòng thử lại!');
+      btn.disabled=false;btn.textContent='Gửi yêu cầu tư vấn';
+    }
+  }catch(e){
+    alert('Không kết nối được. Vui lòng thử lại hoặc liên hệ hotline 0703.965.703');
+    btn.disabled=false;btn.textContent='Gửi yêu cầu tư vấn';
+  }
+}
+
+/* ── FAQ ── */
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+/* ── Scroll reveal ── */
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
